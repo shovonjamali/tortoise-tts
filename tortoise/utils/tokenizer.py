@@ -128,6 +128,8 @@ def basic_cleaners(text):
   '''Basic pipeline that lowercases and collapses whitespace without transliteration.'''
   text = lowercase(text)
   text = collapse_whitespace(text)
+  text = text.replace('"', '') # updated like english_cleaners
+  # TO-DO: expand_abbreviations for other non-english language
   return text
 
 
@@ -166,7 +168,7 @@ def lev_distance(s1, s2):
   return distances[-1]
 
 
-DEFAULT_VOCAB_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../data/tokenizer.json')
+DEFAULT_VOCAB_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../data/da_bpe_tokenizer.json')
 
 
 class VoiceBpeTokenizer:
